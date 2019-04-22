@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import CardList from './components/CardList';
 import SearchBox from './components/SearchBox';
+import Scroll from './components/Scroll';
 import './App.css';
 
 export class App extends Component {
@@ -28,18 +29,13 @@ export class App extends Component {
     }
  
     render(){
-        
-        const loadingStyle={
-            color:'white',
-            textAlign: 'center'
-        }
 
         const filterRobots = this.state.robots.filter(robot=>{
             return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
             });
 
         if(this.state.robots.length === 0){
-         return  <h1 style={loadingStyle}>Loading...</h1>;
+         return  <h1 style={{color:'white',textAlign:'center'}}>Loading...</h1>;
         }
 
         else{
@@ -47,7 +43,9 @@ export class App extends Component {
             <div className="tc App">
                 <h1 className="">Robots</h1>
                 <SearchBox searchChange={this.onSearchChangeHandler}/>
-                <CardList robots={filterRobots} />
+                <Scroll>
+                    <CardList robots={filterRobots} />
+                </Scroll>
             </div>
         );
         }
