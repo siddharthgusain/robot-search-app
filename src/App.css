@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
 .App h1{
     color:white;
     font-size:500%;
+    font-family: 'Abril Fatface', cursive;
 }
