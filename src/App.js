@@ -37,7 +37,6 @@ export class App extends Component {
         if(this.state.robots.length === 0){
          return  <h1 style={{color:'white',textAlign:'center'}}>Loading...</h1>;
         }
-
         else{
         return(
             <div className="tc App">
