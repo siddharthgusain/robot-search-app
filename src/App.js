@@ -6,14 +6,22 @@ import './App.css';
 
 export class App extends Component {
 
+    constructor(props){
+
+        super(props)
+        this.state = {
+            robots: robots,
+            searchfield:''
+        }
+    }
     render(){
-    return(
-        <div className="tc App">
-            <h1 className="">Robots</h1>
-            <SearchBox />
-            <CardList robots={robots} />
-        </div>
-    );
+        return(
+            <div className="tc App">
+                <h1 className="">Robots</h1>
+                <SearchBox />
+                <CardList robots={this.state.robots} />
+            </div>
+        );
     }
 }
 
