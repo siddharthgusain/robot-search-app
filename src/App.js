@@ -14,16 +14,21 @@ export class App extends Component {
             searchfield:''
         }
     }
-    onSearchChangeHandler(event){
-        console.log(event.target.value);
-    }
 
+    onSearchChangeHandler = event => {
+        this.setState({searchfield:event.target.value});
+    }
+ 
     render(){
+        const filterRobots = this.state.robots.filter(robot=>{
+            return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+            });
+
         return(
             <div className="tc App">
                 <h1 className="">Robots</h1>
                 <SearchBox searchChange={this.onSearchChangeHandler}/>
-                <CardList robots={this.state.robots} />
+                <CardList robots={filterRobots} />
             </div>
         );
     }
