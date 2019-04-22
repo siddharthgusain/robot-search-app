@@ -14,11 +14,15 @@ export class App extends Component {
             searchfield:''
         }
     }
+    onSearchChangeHandler(event){
+        console.log(event.target.value);
+    }
+
     render(){
         return(
             <div className="tc App">
                 <h1 className="">Robots</h1>
-                <SearchBox />
+                <SearchBox searchChange={this.onSearchChangeHandler}/>
                 <CardList robots={this.state.robots} />
             </div>
         );
