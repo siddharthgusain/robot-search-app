@@ -4,7 +4,7 @@ import React from 'react';
 const Card = () =>{
     return (
         <div>
-            <img alt="robots" src="" />
+            <img alt="robots" src="https://robohash.org/lol" />
             <div>
                 <h2>Sid</h2>
                 <p>sid@gmail.com</p>
