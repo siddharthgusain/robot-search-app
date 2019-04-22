@@ -7,14 +7,26 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
 
 import { setSearchField } from '../actions/action';
+
+const mapStateToProps = state=>{
+    return {
+        searchField:state.searchField
+    }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        onSearchChangeHandler:(event)=>dispatch(setSearchField(event.target.value))
+    }
+}
+
 export class App extends Component {
 
     constructor(props){
 
         super(props)
         this.state = {
-            robots: [], 
-            searchfield:''
+            robots: []
         }
 
     }
@@ -24,15 +36,13 @@ export class App extends Component {
             .then(response =>response.json())
             .then(users=>this.setState({robots : users}));
     }
-
-    onSearchChangeHandler = event => {
-        this.setState({searchfield:event.target.value});
-    }
  
     render(){
+        const { robots } = this.state;
+        const { searchField,onSearchChangeHandler } =this.props;
 
-        const filterRobots = this.state.robots.filter(robot=>{
-            return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        const filterRobots = robots.filter(robot=>{
+            return robot.name.toLowerCase().includes(searchField.toLowerCase());
             });
 
         if(this.state.robots.length === 0){
@@ -42,7 +52,7 @@ export class App extends Component {
         return(
             <div className="tc App">
                 <h1 className="">Robots</h1>
-                <SearchBox searchChange={this.onSearchChangeHandler}/>
+                <SearchBox searchChange={onSearchChangeHandler}/>
                 <Scroll>
                     <ErrorBoundary>
                         <CardList robots={filterRobots} />
@@ -55,4 +65,5 @@ export class App extends Component {
     
 }
 
-export default connect()(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
