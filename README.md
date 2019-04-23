@@ -1,4 +1,5 @@
-# A robot-search-app made using React and redux is used for state management.It uses jsonplaceholder API for robot details.
+# A robot-search-app made using React and redux is used for state management.
+# It uses jsonplaceholder API for robot details.
 
 ## Available Scripts
 
